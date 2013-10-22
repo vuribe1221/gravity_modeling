@@ -1,7 +1,6 @@
 Code Written by Victor Uribe in collaboration with Kyle Beard, York Meyers, and Jordan Gietz.
 
-*This code assumes that cctools has been installed properly and you have access to Futuregrid 
-or some other HTC/HPC installed.
+*This code assumes that you have access to Futuregrid or some other HTC/HPC and have cctools installed properly.
 
 
 ########################################################
