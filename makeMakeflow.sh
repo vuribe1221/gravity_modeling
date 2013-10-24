@@ -9,7 +9,8 @@ fi
 mkdir density.parts
 
 #DO WORK... SPLIT DENSITY_GRID.TXT INTO GIVEN NUMBER OF FILES
-split -dl$((`wc -l $1|sed 's/ .*$//'` / $2 + 1)) $1 density.parts/$1_part.
+split -a 4 -dl$((`wc -l $1|sed 's/ .*$//'` / $2 + 1)) $1 density.parts/$1_part.
+
 #Create Makeflow file give it the inputs files
 touch Makeflow
 
@@ -32,10 +33,14 @@ while [ $nums -gt $i ];
 	do
 	if [ $i -le 9 ]
 	then
-		echo -e $1'_part.0'$i'.out: grav.py '$1'_part.0'$i' prism.py '$3'\n\tpython grav.py '$1'_part.0'$i ' '$3>> Makeflow;
+		echo -e $1'_part.000'$i'.out: grav.py '$1'_part.000'$i' prism.py '$3'\n\tpython grav.py '$1'_part.000'$i ' '$3>> Makeflow;
+	elif [ $i -le 99 ]
+	then	
+		echo -e $1'_part.00'$i'.out: grav.py '$1'_part.00'$i' prism.py '$3'\n\tpython grav.py '$1'_part.00'$i' '$3>> Makeflow;
 	else
-		echo -e $1'_part.'$i'.out: grav.py '$1'_part.'$i' prism.py '$3'\n\tpython grav.py '$1'_part.'$i' '$3>> Makeflow;
+		echo -e $1'_part.0'$i'.out: grav.py '$1'_part.0'$i' prism.py '$3'\n\tpython grav.py '$1'_part.0'$i' '$3>> Makeflow;
 	fi
+	
 	let i=$i+1
 done
 

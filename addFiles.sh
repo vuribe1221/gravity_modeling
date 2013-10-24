@@ -8,8 +8,8 @@ fi
 
 
 cut -f 3 -d ' ' *.out > col
-
-split -dl 3 col col.
+ 
+split -a 10 -dl 3 col col.
 
 paste -d"+" col.*|while read line
 	do
