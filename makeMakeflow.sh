@@ -51,8 +51,9 @@ cp grav.py density.parts/
 cp addFiles.sh density.parts/
 rm Makeflow
 cd density.parts
-makeflow -T torque
-sh addFiles.sh > ../OUT
+#makeflow -T torque
+makeflow -T wq -p $4
+#sh addFiles.sh > ../OUT
 
 #End--------Contents of chunkFile.sh
  

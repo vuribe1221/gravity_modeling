@@ -5,26 +5,16 @@ if [ -f ./sum ]
 then
 	rm sum
 fi
-
-
-cut -f 3 -d ' ' *.out > col
- 
-split -a 10 -dl 3 col col.
-
-paste -d"+" col.*|while read line
-	do
-	#echo -n"$line="
-	echo $line|bc >> sum
-	done
-
-rm col*
-
-let i=1
-let j=`wc -l sum|cut -f1 -d ' '`
-
-while [ $i -le $j ];
-do
-	echo $i' '1 `head -n $i sum|tail -n 1` 
-	let i=$i+1
-done
+sed '3q;d' *0000.out
+let i=0;
+let j=0;
+let k=`ls *.out|wc -l`;
+####
+#while [ $i -le 1 ];
+#	do
+#	while [ $j -le 1 ]
+#		do
+#		sed '1q;d' *0000.out
+#		done
+#	done
 #End--------Contents of chunkFile.sh
