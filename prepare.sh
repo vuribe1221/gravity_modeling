@@ -1,15 +1,20 @@
-cut -d ' ' -f 3 *.out > onlycol3
+cut -d ' ' -f 3 *.out > cutfiles
 
-split -a 4 -dl 10000 onlycol3 out.
+let temp=`wc -l cutfiles|cut -d ' ' -f 1`
 
-paste -d ' ' out.* > calc
+let temp1=`ls *.out|wc -l`
+let temp2=`echo $(($temp/$temp1))`
 
-sed ':a;N;$!ba;s/ /+/g' calc > plus
+split -dl $temp2 cutfiles
+
+paste -d ' ' x* > pstdfile
+
+sed ':a;N;$!ba;s/ /+/g' pstdfile > plus
 
 let i=1
-let j=`wc -l output|cut -f 1 -d ' '`
+let j=`wc -l pstdfile|cut -d ' ' -f 1`
 
 while [ $i -le $j ];
         do echo -n $i" "
-        head -n $i output|tail -n 1|bc; let i=$i+1; done
+        head -n $i plus|tail -n 1|bc; let i=$i+1; done
 let i=1
