@@ -1,7 +1,7 @@
 #Begin------Contents of gravmodeling.sh
 #!/bin/bash
 # sh scriptname filename # of parts
-
+date > startTime
 if [ -d ./density.parts ]
 then	
 	rm -r density.parts
@@ -49,11 +49,16 @@ cp $3 density.parts/
 cp prism.py density.parts/
 cp grav.py density.parts/
 cp addFiles.sh density.parts/
+cp prepare.sh density.parts/
 rm Makeflow
 cd density.parts
 #makeflow -T torque
 makeflow -T wq -a -N vuribe-calc -p $4
-#sh addFiles.sh > ../OUT
+sh prepare.sh > ../OUT
 
+#comment this line to debug files
+cd ..
+rm -r density.parts/
+date > endTime
 #End--------Contents of chunkFile.sh
  
