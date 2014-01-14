@@ -49,3 +49,13 @@ $ sh makeMakeflow.sh <density_file> <N> <gravity_pos_file>
 Output files:
            OUT
             -Found in the present working directory
+            
+            
+########################################################
+#                                                      #
+#                        Result                        #
+#                                                      #
+########################################################            
+
+Final Result:
+http://s243.photobucket.com/user/redryno1221/media/Gravity_Modeling/56e4v.gif.html
